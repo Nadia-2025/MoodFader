@@ -1,0 +1,7 @@
+frontend/
+backend/venv/
+
+*.log
+.DS_Store
+
+*.env
