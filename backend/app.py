@@ -2,9 +2,9 @@ import os
 from flask import Flask, jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv
-# from routes.auth_routes import auth_bp
+from routes.auth_routes import auth_bp
 from routes.moods_routes import mood_bp
-# from routes.favourites_routes import favourites_bp
+from routes.favourites_routes import favourites_bp
 from database import db
 
 load_dotenv()
@@ -14,9 +14,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///moodfader.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 CORS(app)
 
-# app.register_blueprint(auth_bp, url_prefix="/auth")
+app.register_blueprint(auth_bp, url_prefix="/auth")
 app.register_blueprint(mood_bp, url_prefix="/api")
-# app.register_blueprint(favourites_bp, url_prefix="/api")
+app.register_blueprint(favourites_bp, url_prefix="/api")
 
 db.init_app(app)
 
